@@ -1,0 +1,21 @@
+-- 1. Soru: Satış kanalına göre toplam sipariş adedi
+
+select sales_channel,count(*) as total_orders
+from Sales
+group by sales_channel
+
+-- 2. Soru: Ödeme yöntemine göre toplam net satış
+
+select payment_method,sum(net_sales) as total_revenue
+from Sales
+group by payment_method
+order by [total_revenue] desc
+
+-- 3. Soru: En çok sipariş veren ilk 5 müşteri
+
+select top 5 customer_id, count(*) as order_count
+from Sales
+where order_status = 'Completed'
+group by customer_id
+order by [order_count] desc
+
