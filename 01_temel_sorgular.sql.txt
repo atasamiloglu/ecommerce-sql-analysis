@@ -1,0 +1,16 @@
+-- 1. Soru: Mobile App üzerinden verilen ve tamamlanan siparişler
+
+select order_id,order_date,sales_channel
+from Sales
+where sales_channel='Mobile App' and order_status='Completed'
+
+-- 2. Soru: Tekrarsız sipariş durumları
+
+select distinct order_status
+from Sales
+
+-- 3. Soru: En güncel 10 sipariş
+
+select top 10 *
+from Sales
+order by order_date desc, order_time desc
